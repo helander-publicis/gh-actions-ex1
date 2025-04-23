@@ -28,6 +28,6 @@ jobs:
       - name: Install dependensies
         run: npm ci
       - name: Build project
-        run: npm run Build
+        run: npm run build
       - name: Deploy
-        run: echo "Code is definitley deploying... Yup."
+        run: echo "Code is definitely deploying... Yup."
