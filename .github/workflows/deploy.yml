@@ -1,0 +1,33 @@
+name: Deploy
+on: [push, workflow_dispatch]
+jobs: 
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout
+      - name: Install dependensies
+        run: npm ci
+      - name: Run lint
+        run: nom run lint
+  test:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout
+      - name: Install dependensies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+  deploy: 
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout
+      - name: Install dependensies
+        run: npm ci
+      - name: Build project
+        run: npm run Build
+      - name: Deploy
+        run: echo "Code is definitley deploying... Yup."
